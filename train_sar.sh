@@ -1,0 +1,1 @@
+python -u train.py --checkpoints ./sar_checkpoints --train_data_dir /path/to/train/images/dir --train_data_gt /path/to/train/annotation/file --test_data_dir /path/to/validation/images/dir --test_data_gt /path/to/validation/annotation/file --train_batch_size 128 --val_batch_size 128 -g "0" --aug True
