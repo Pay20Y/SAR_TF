@@ -27,7 +27,7 @@ def get_images(images_dir):
     return files
 
 def get_data(args):
-    if args.test_data_gt != '' and os.path.exists(args.test_data_gt):
+    if args.test_data_gt != '' and args.test_data_gt is not None:
         if args.test_data_gt.split('.')[1] == 'json':
             # data_loader = ArTLoader(args.test_data_dir)
             data_loader = SynTextLoader(args.test_data_dir)
