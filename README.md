@@ -20,7 +20,7 @@ python3 test.py --test_data_dir ./demo_data --checkpoints ./sar_synall_lmdb_chec
 * <b> Data prepare</b>  
 LMDB format is suggested. refer [here](https://github.com/bgshih/crnn/blob/master/tool/create_dataset.py) to generate data in LMDB format.
 Also raw images with annoation file (json or txt) is also supported. The stucture of annoation file please refer to [txt](https://github.com/Pay20Y/SAR_TF/blob/master/demo_data/gt.txt) or [json](https://github.com/Pay20Y/SAR_TF/blob/master/demo_data/gt.json)
-* <b> Run</b>  
++ <b> Run</b>  
 + LMDB:
 ```
 python3 train.py --checkpoints /path/to/save/checkpoints --train_data_dir /path/to/your/train/LMDB/data/dir --test_data_dir /path/to/your/test/LMDB/data/dir  -g "0"
