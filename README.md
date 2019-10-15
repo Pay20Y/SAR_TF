@@ -20,16 +20,16 @@ python3 test.py --test_data_dir ./demo_data --checkpoints ./sar_synall_lmdb_chec
 * <b> Data prepare</b>  
 LMDB format is suggested. refer [here](https://github.com/bgshih/crnn/blob/master/tool/create_dataset.py) to generate data in LMDB format.
 Also raw images with annoation file (json or txt) is also supported. The stucture of annoation file please refer to [txt](https://github.com/Pay20Y/SAR_TF/blob/master/demo_data/gt.txt) or [json](https://github.com/Pay20Y/SAR_TF/blob/master/demo_data/gt.json)
-+ <b> Run</b>  
-+ LMDB:
-```
-python3 train.py --checkpoints /path/to/save/checkpoints --train_data_dir /path/to/your/train/LMDB/data/dir --test_data_dir /path/to/your/test/LMDB/data/dir  -g "0"
-```  
-+ Raw images:
-```
-python3 train.py --checkpoints /path/to/save/checkpoints --train_data_dir /path/to/your/train/images/dir --train_data_gt /path/to/your/train/annotation/file(txt or json) --test_data_dir /path/to/your/test/images/dir --test_data_gt /path/to/your/train/annotation/file(txt or json) -g "0"
-```  
-+ More super parameters please refer to [config.py](https://github.com/Pay20Y/SAR_TF/blob/master/config.py)  
+* <b> Run</b>  
+	LMDB:
+	```
+	python3 train.py --checkpoints /path/to/save/checkpoints --train_data_dir /path/to/your/train/LMDB/data/dir --test_data_dir /path/to/your/test/LMDB/data/dir  -g "0"
+	```  
+	Raw images:
+	```
+	python3 train.py --checkpoints /path/to/save/checkpoints --train_data_dir /path/to/your/train/images/dir --train_data_gt /path/to/your/train/annotation/file(txt or json) --test_data_dir /path/to/your/test/images/dir --test_data_gt /path/to/your/train/annotation/file(txt or json) -g "0"
+	```  
+	More super parameters please refer to [config.py](https://github.com/Pay20Y/SAR_TF/blob/master/config.py)  
 
 ### Test
 Similar to demo and you can also provide annotation and it will calculate accuracy
