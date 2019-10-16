@@ -29,7 +29,7 @@ Also raw images with annoation file (json or txt) is also supported. The stuctur
 	```
 	python3 train.py --checkpoints /path/to/save/checkpoints --train_data_dir /path/to/your/train/images/dir --train_data_gt /path/to/your/train/annotation/file(txt or json) --test_data_dir /path/to/your/test/images/dir --test_data_gt /path/to/your/train/annotation/file(txt or json) -g "0"
 	```  
-	More super parameters please refer to [config.py](https://github.com/Pay20Y/SAR_TF/blob/master/config.py)  
+	More hyper-parameters please refer to [config.py](https://github.com/Pay20Y/SAR_TF/blob/master/config.py)  
 
 ### Test
 Similar to demo and you can also provide annotation and it will calculate accuracy
