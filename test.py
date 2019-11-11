@@ -5,9 +5,8 @@ import os
 import sys
 
 from data_provider.data_utils import get_vocabulary
-from data_provider.art_loader import ArTLoader
-from data_provider.syn90k_loader import Syn90KLoader
-from data_provider.syntext_loader import SynTextLoader
+from data_provider.json_loader import JSONLoader
+from data_provider.text_loader import TextLoader
 from utils.transcription_utils import idx2label, calc_metrics
 from sar_model import SARModel
 from utils.metrics import accuracy
@@ -30,9 +29,9 @@ def get_data(args):
     if args.test_data_gt != '' and args.test_data_gt is not None:
         if args.test_data_gt.split('.')[1] == 'json':
             # data_loader = ArTLoader(args.test_data_dir)
-            data_loader = SynTextLoader(args.test_data_dir)
+            data_loader = TextLoader(args.test_data_dir)
         elif args.test_data_gt.split('.')[1] == 'txt':
-            data_loader = Syn90KLoader(args.test_data_dir)
+            data_loader = JSONLoader(args.test_data_dir)
         else:
             raise Exception("Unsupported file type")
         images_path, labels = data_loader.parse_gt(args.test_data_gt)
