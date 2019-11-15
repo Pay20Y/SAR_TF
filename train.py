@@ -212,7 +212,7 @@ def main_train(args):
                         print("{} \t {}".format(result, gt))
                     print("#" * 80)
                     print("test prediction \t test labels ")
-                    for result, gt in zip(idx2label(val_pred_value)[:32], val_data[3][:32]):
+                    for result, gt in zip(idx2label(val_pred_value), val_data[3]):
                         print("{} \t {}".format(result, gt))
                     print("#" * 80)
 
