@@ -119,7 +119,10 @@ def generator(image_dir, gt_path, input_height, input_width, batch_size, max_len
 
 def get_batch(num_workers, **kwargs):
     try:
-        enqueuer = GeneratorEnqueuer(generator(**kwargs), use_multiprocessing=True)
+        if (num_workers > 1):
+            enqueuer = GeneratorEnqueuer(generator(**kwargs), use_multiprocessing=True)
+        else:
+            enqueuer = GeneratorEnqueuer(generator(**kwargs), use_multiprocessing=False)
         print('Generator use 10 batches for buffering, this may take a while, you can tune this yourself.')
         enqueuer.start(max_queue_size=4, workers=num_workers)
         generator_output = None
