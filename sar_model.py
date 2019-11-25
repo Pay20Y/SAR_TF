@@ -47,7 +47,7 @@ class SARModel(object):
         img_W = tf.cast(tf.shape(input_images)[2], tf.float32)
         feature_map = self.backbone(input_images)
         fea_W = tf.cast(tf.shape(feature_map)[2], tf.float32)
-        input_widths = tf.cast(tf.floor(input_widths * (fea_W / img_W)), tf.int32)
+        input_widths = tf.cast(tf.math.floor(input_widths * (fea_W / img_W)), tf.int32)
         encoder_state = self.encoder(feature_map, input_widths)
 
         with tf.name_scope(name="fea_post_process"):

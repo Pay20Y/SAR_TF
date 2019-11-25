@@ -36,12 +36,6 @@ Similar to demo and you can also provide annotation and it will calculate accura
 ```
 python3 test.py --test_data_dir /path/to/your/test/images/dir --test_data_gt /path/to/your/test/annotation/file(optional) --checkpoints /path/to/trained/checkpoints -g "0"
 ```  
-### Export frozen model
-If you want to create a predicion server, you can export the frozen model with this command
-```
-python3 freeze.py
-```
-By default it will take the last checkpoint in the  ```./checkpoints``` folder. To change it, use the ```--checkpoints``` parameter.
 
 ## Reproduced results
 
