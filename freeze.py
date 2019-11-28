@@ -89,9 +89,12 @@ def main_train(args):
                 tf.get_default_graph().as_graph_def(),  # The graph_def is used to retrieve the nodes
                 ['sar_1/ArgMax']  # The output node names are used to select the useful nodes
             )
-            with tf.gfile.GFile(args.checkpoints+"/frozen_sar.pb", "wb") as f:
+
+            frozen_model_path = os.path.join(args.checkpoints,os.path.basename(ckpt_state.model_checkpoint_path))+".pb"
+
+            with tf.gfile.GFile(frozen_model_path, "wb") as f:
                 f.write(output_graph_def.SerializeToString())
-        print("Frozen model saved at " + args.checkpoints+"/frozen_sar.pb")
+        print("Frozen model saved at " + frozen_model_path)
 
 
 if __name__ == "__main__":
