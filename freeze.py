@@ -40,12 +40,12 @@ def main_train(args):
                          is_training=False)
     train_model_infer, train_attention_weights, train_pred = sar_model(input_train_images, input_train_labels,
                                                                        input_train_images_width,
-                                                                       batch_size=1, reuse=False)
+                                                                       reuse=False)
     train_loss = sar_model.loss(train_model_infer, input_train_labels, input_train_labels_mask)
 
     val_model_infer, val_attention_weights, val_pred = sar_model_val(input_val_images, input_val_labels,
                                                                        input_val_images_width,
-                                                                       batch_size=1, reuse=True)
+                                                                       reuse=True)
     val_loss = sar_model_val.loss(val_model_infer, input_val_labels, input_val_labels_mask)
 
     global_step = tf.get_variable(name='global_step', initializer=tf.constant(0), trainable=False)

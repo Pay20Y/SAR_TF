@@ -100,12 +100,12 @@ def main_train(args):
                          is_training=False)
     train_model_infer, train_attention_weights, train_pred = sar_model(input_train_images, input_train_labels,
                                                                        input_train_images_width,
-                                                                       batch_size=args.train_batch_size, reuse=False)
+                                                                       reuse=False)
     train_loss = sar_model.loss(train_model_infer, input_train_labels, input_train_labels_mask)
 
     val_model_infer, val_attention_weights, val_pred = sar_model_val(input_val_images, input_val_labels,
                                                                        input_val_images_width,
-                                                                       batch_size=args.val_batch_size, reuse=True)
+                                                                       reuse=True)
     val_loss = sar_model_val.loss(val_model_infer, input_val_labels, input_val_labels_mask)
 
     train_data_list = get_data(args.train_data_dir,

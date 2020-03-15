@@ -35,14 +35,14 @@ class SARModel(object):
                                att_keep_prob=0.5,
                                is_training=self.is_training)
 
-    def __call__(self, input_images, input_labels, input_widths, batch_size, reuse=False, decode_type='greed'):
+    def __call__(self, input_images, input_labels, input_widths, reuse=False, decode_type='greed'):
         with tf.variable_scope(name_or_scope="sar", reuse=reuse):
             encoder_state,  feature_map, mask_map = self.inference(input_images, input_widths, batch_size)
             decoder_logits, attention_weights, pred = self.decode(encoder_state, feature_map, input_labels, mask_map, decode_type=decode_type)
 
             return decoder_logits, attention_weights, pred
 
-    def inference(self, input_images, input_widths, batch_size):
+    def inference(self, input_images, input_widths):
         # with tf.variable_scope(name_or_scope='sar', reuse=reuse):
         img_W = tf.cast(tf.shape(input_images)[2], tf.float32)
         feature_map = self.backbone(input_images)
@@ -52,10 +52,10 @@ class SARModel(object):
 
         with tf.name_scope(name="fea_post_process"):
             # construct mask map
-            input_widths_list = tf.split(input_widths, batch_size)
+            input_widths_list = tf.unstack(input_widths, axis=0)
             mask_map = []
             for i, width in enumerate(input_widths_list):
-                mask_slice = tf.pad(tf.zeros(dtype=tf.float32, shape=width), [[0, tf.shape(feature_map)[2]-width[0]]], constant_values=1)
+                mask_slice = tf.pad(tf.zeros(dtype=tf.float32, shape=width), [[0, tf.shape(feature_map)[2]-width]], constant_values=1)
                 mask_slice = tf.tile(tf.expand_dims(mask_slice, axis=0), [tf.shape(feature_map)[1], 1])
                 mask_map.append(mask_slice)
             # mask_map = tf.expand_dims(tf.zeros_like(feature_map[:, :, :, 0]), axis=-1)  # N * H * W * 1

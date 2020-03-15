@@ -86,7 +86,7 @@ def main_test(args):
                          seq_len=args.max_len,
                          is_training=False)
 
-    model_infer, attention_weights, pred = sar_model(input_images, input_labels, input_images_width, batch_size=1, reuse=False)
+    model_infer, attention_weights, pred = sar_model(input_images, input_labels, input_images_width, reuse=False)
     global_step = tf.get_variable('global_step', [], initializer=tf.constant_initializer(0), trainable=False, dtype=tf.int32)
     variable_averages = tf.train.ExponentialMovingAverage(0.997, global_step)
     saver = tf.train.Saver(variable_averages.variables_to_restore())
