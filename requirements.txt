@@ -15,7 +15,7 @@ kiwisolver==1.1.0
 lmdb==0.97
 networkx==2.3
 numpy==1.14.5
-opencv-python==4.1.0.25
+opencv-python==4.1.1.26
 protobuf==3.8.0
 pyparsing==2.4.0
 python-dateutil==2.8.0
